@@ -1,5 +1,5 @@
 .bg-color-primary {
-    background-color: #3ba411;
+    background-image: radial-gradient(circle, #9ccc52,#3ba411 );
 }
 
 .btn-primary {
@@ -8,6 +8,7 @@
     --bs-btn-hover-color: var(--bs-white);
     --bs-btn-hover-bg: #8ec861;
 }
+
 
 .carouselSize {
     height: 20vh;
@@ -18,6 +19,23 @@
     height: 61px;
 }
 
+.clickeable{
+    cursor:pointer;
+}
+
+.clickeable:hover{
+    color: #40b5cb;
+    transition: color 0.5s;
+}
+
+.favorite{
+    color: #40b5cb;
+}
+
+.favorite:hover{
+    color: #212529;
+    transition: color 0.5s;
+}
 
 @media screen and (min-width: 768px) {
     .carouselSize {
