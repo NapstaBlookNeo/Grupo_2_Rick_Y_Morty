@@ -1,5 +1,5 @@
 .bg-color-primary {
-    background-color: #3ba411;
+    background-image: radial-gradient(circle, #64b144, #8ec861, #3ba411, #8ec861, #3ba411);
 }
 
 .btn-primary {
@@ -23,8 +23,18 @@
     cursor:pointer;
 }
 
+.clickeable:hover{
+    color: #40b5cb;
+    transition: color 0.5s;
+}
+
 .favorite{
-    color: yellow;
+    color: #40b5cb;
+}
+
+.favorite:hover{
+    color: #212529;
+    transition: color 0.5s;
 }
 
 @media screen and (min-width: 768px) {
