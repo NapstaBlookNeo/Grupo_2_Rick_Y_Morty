@@ -86,7 +86,8 @@
                 <button class="btn btn-primary bi bi-star-fill col-4" type="button" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"> Favorites</button>
                 <form class="d-flex col-7" role="search">
-                    <input class="form-control me-2 " type="search" id="searchInput" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2 " type="search" id="searchInput" placeholder="Search"
+                        aria-label="Search">
                     <button class="btn btn-primary" id="searchButton" type="button">Search</button>
                 </form>
             </div>
@@ -101,63 +102,12 @@
                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body d-lg-flex row">
-                            <div class="col-12 col-lg-4 my-2">
-                                <div class="card">
-                                    <img src="images/default.png" class="card-img-top"
-                                        onerror="this.src=`images/default.png`">
-                                    <div class="card-body">
-                                        <h3 class="card-title mb-4 text-center">Name</h3>
-                                        <p class="card-text">Origin: xxxxxx</p>
-                                        <p class="card-text">Specie: xxxxxx</p>
-                                        <p class="card-text">Gender: xxxxxx</p>
-                                        <p class="card-text">Status: dead/Alive/Unknown</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 my-2">
-                                <div class="card">
-                                    <img src="images/default.png" class="card-img-top"
-                                        onerror="this.src=`images/default.png`">
-                                    <div class="card-body">
-                                        <h3 class="card-title mb-4 text-center">Name</h3>
-                                        <p class="card-text">Origin: xxxxxx</p>
-                                        <p class="card-text">Specie: xxxxxx</p>
-                                        <p class="card-text">Gender: xxxxxx</p>
-                                        <p class="card-text">Status: dead/Alive/Unknown</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 my-2">
-                                <div class="card">
-                                    <img src="images/default.png" class="card-img-top"
-                                        onerror="this.src=`images/default.png`">
-                                    <div class="card-body">
-                                        <h3 class="card-title mb-4 text-center">Name</h3>
-                                        <p class="card-text">Origin: xxxxxx</p>
-                                        <p class="card-text">Specie: xxxxxx</p>
-                                        <p class="card-text">Gender: xxxxxx</p>
-                                        <p class="card-text">Status: dead/Alive/Unknown</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 my-2">
-                                <div class="card">
-                                    <img src="images/default.png" class="card-img-top"
-                                        onerror="this.src=`images/default.png`">
-                                    <div class="card-body">
-                                        <h3 class="card-title mb-4 text-center">Name</h3>
-                                        <p class="card-text">Origin: xxxxxx</p>
-                                        <p class="card-text">Specie: xxxxxx</p>
-                                        <p class="card-text">Gender: xxxxxx</p>
-                                        <p class="card-text">Status: dead/Alive/Unknown</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="modal-body d-lg-flex row" id="favoriteCards">
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Understood</button>
+                            <a href="characters.html" class="btn btn-primary">Understood</a>
                         </div>
                     </div>
                 </div>
@@ -168,7 +118,7 @@
                 data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
                 Filter</button>
 
-            <div class="offcanvas offcanvas-bottom d-md-none" tabindex="-1" id="offcanvasBottom"
+            <div class="offcanvas offcanvas-bottom d-md-none offcanvas-size-xl" tabindex="-1" id="offcanvasBottom"
                 aria-labelledby="offcanvasBottomLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasBottomLabel">Filter</h5>
@@ -198,7 +148,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-    <script src="javascript/characters.js"></script>
+
+    <script type="module" src="javascript/modules/functions.js"></script>
+    <script type="module" src="javascript/characters.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="javascript/vue-components/CharacterCardsComponent.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script src="javascript/vue-components/CharacterCardsComponent.js" type="module"></script>
 </body>
 
 </html>
