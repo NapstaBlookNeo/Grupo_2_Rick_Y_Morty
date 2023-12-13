@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse justify-content-end px-2" id="navbarNav">
                     <ul class="navbar-nav fw-semibold">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">CHARACTERS</a>
+                            <a class="nav-link active" aria-current="page" href="characters.html">CHARACTERS</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="locations.html">LOCATIONS</a>
@@ -75,8 +75,7 @@
         <aside class="col-lg-3 bd-sidebar p-2 d-none d-lg-block px-4">
             <h4 class="text-center bi bi-funnel-fill pb-4"> FILTERS</h4>
             <div id="filtersSidebar"></div>
-            
-            <button class="btn btn-primary col-12 my-4" id="filterButton">FILTER</button>
+            <button class="btn btn-primary col-12 my-4" id="filterButtonSidebar">FILTER</button>
         </aside>
 
         <!-- Main -->
@@ -87,8 +86,8 @@
                 <button class="btn btn-primary bi bi-star-fill col-4" type="button" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"> Favorites</button>
                 <form class="d-flex col-7" role="search">
-                    <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-primary" type="submit">Search</button>
+                    <input class="form-control me-2 " type="search" id="searchInput" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-primary" id="searchButton" type="button">Search</button>
                 </form>
             </div>
 
@@ -169,14 +168,15 @@
                 data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
                 Filter</button>
 
-            <div class="offcanvas offcanvas-bottom d-md-none " tabindex="-1" id="offcanvasBottom"
+            <div class="offcanvas offcanvas-bottom d-md-none" tabindex="-1" id="offcanvasBottom"
                 aria-labelledby="offcanvasBottomLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasBottomLabel">Filter</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body" id="filtersOffcanvas">
-                    
+                <div class="offcanvas-body" id="filtersOffcanvas"></div>
+                <div class="text-center p-3">
+                    <button class="btn btn-primary col-12 my-2" id="filterButtonOffcanvas">FILTER</button>
                 </div>
             </div>
 

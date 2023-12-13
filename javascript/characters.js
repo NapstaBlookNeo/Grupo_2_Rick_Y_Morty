@@ -9,17 +9,22 @@ let filters = {};
 
 let speciesParam = url.get('species')
 if (speciesParam) {
-    filters.species = speciesParam.split(',')
+    filters.species = speciesParam.split('&')
+}
+
+let nameParam = url.get('name');
+if (nameParam) {
+    filters.name = nameParam.split('&');
 }
 
 let genderParam = url.get('gender')
 if (genderParam) {
-    filters.gender = genderParam.split(',')
+    filters.gender = genderParam.split('&')
 }
 
 let statusParam = url.get('status')
 if (statusParam) {
-    filters.status = statusParam.split(',')
+    filters.status = statusParam.split('&')
 }
 
 if (searchParams == null) {
@@ -70,30 +75,35 @@ fetch(apiUrl)
         pagination.appendChild(paginationElements)
 
         function paginationNumeration(size) {
-            size = parseInt(size)
-            let maxSize = parseInt(data.info.pages)
-            let element = ""
-
+            size = parseInt(size);
+            let maxSize = parseInt(data.info.pages);
+            let element = "";
+            let currentQuery = window.location.search.substring(1);
+            let queryParameters = new URLSearchParams(currentQuery);
+            if (queryParameters.has('page')) {
+                queryParameters.delete('page');
+            }
+            currentQuery = queryParameters.toString();
             if (size > 5) {
                 for (let i = size - 4; i <= size + 5; i++) {
                     if (i <= maxSize && i > 0) {
                         if (i === size) {
-                            element += `<li class="page-item"><a class="page-link active" href="?page=${i}">${i}</a></li>`
+                            element += `<li class="page-item"><a class="page-link active" href="?${currentQuery}&page=${i}">${i}</a></li>`;
                         } else {
-                            element += `<li class="page-item"><a class="page-link" href="?page=${i}">${i}</a></li>`
+                            element += `<li class="page-item"><a class="page-link" href="?${currentQuery}&page=${i}">${i}</a></li>`;
                         }
                     }
                 }
-                return element
+                return element;
             } else {
                 for (let i = 1; i <= Math.min(10, maxSize); i++) {
                     if (i === size) {
-                        element += `<li class="page-item"><a class="page-link active" href="?page=${i}">${i}</a></li>`
+                        element += `<li class="page-item"><a class="page-link active" href="?${currentQuery}&page=${i}">${i}</a></li>`;
                     } else {
-                        element += `<li class="page-item"><a class="page-link" href="?page=${i}">${i}</a></li>`
+                        element += `<li class="page-item"><a class="page-link" href="?${currentQuery}&page=${i}">${i}</a></li>`;
                     }
                 }
-                return element
+                return element;
             }
         }
 
@@ -145,7 +155,10 @@ fetch(apiUrl)
             return checkboxes
         }
 
-        document.getElementById('filterButton').addEventListener('click', function () {
+        document.getElementById('filterButtonSidebar').addEventListener('click', filterCategories)
+        document.getElementById('filterButtonOffcanvas').addEventListener('click', filterCategories)
+
+        function filterCategories() {
             let activeCheckbox = {}
             let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked')
             checkboxes.forEach(checkbox => {
@@ -157,14 +170,29 @@ fetch(apiUrl)
                     activeCheckbox[schemaElement].push(parameter)
                 }
             })
-        
+
             let urlParams = new URLSearchParams()
             for (let key in activeCheckbox) {
                 urlParams.set(key, activeCheckbox[key].join('&'))
             }
             let urlString = window.location.pathname + '?' + urlParams.toString()
-            urlString = urlString.replace(/%2C/g, '&')
+            urlString = urlString.replace(/%26/g, '&')
             window.location.href = urlString
-        })
+        }
+
+        document.getElementById('searchButton').addEventListener('click', filterSearch);
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                filterSearch();
+            }
+        });
+        function filterSearch() {
+            let searchInput = document.getElementById('searchInput').value;
+            let urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('name', searchInput);
+            let newUrl = window.location.pathname + '?' + urlParams.toString();
+            window.location.href = newUrl;
+        }
     })
 
